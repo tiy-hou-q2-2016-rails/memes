@@ -1,8 +1,17 @@
 language: ruby
 rvm:
-  - 2.3.0
+- 2.3.0
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: v9OavbYWBUn+0v10i7mE6bXBYbEBxoAIgaXfDbgo+gzQPadYtvs7RFtHFPZwphGm5PVxp9lT4NHjrJSN/3iw5AUxUXJuI0L4/WD1LxefUQyogP/OY7MpHWf1iRhgeI8mZMR/8hXOWLvE4ARtzvUfKcHtpvz+iQQXJbF/TvCp9CtKXiZXew4g16jQN2kdmXYbV3l4j3uy3ylD8Bb4dIx6mydthrL8MYlfQcg+r8pSeHZBDMmk4CMACnw4sxexr0OoHOn0pk2joOxzfmBv3wkBIpdPloLb2h5WMGAYeD0xU/Qu/PiDb9VEIafNVIs++xja5mjPsOc4L//0gdr3vc7L7PNtaU7Y7jf5wm7oRnM8S4rG/6AczLO206vcf6D/BQgJnenEJaC9TpIkgKv6PE9yUtXfCp7+LxGjGNtFbjRY5tNkjpmf0II7phAGBl7RL74hIIfj+hWJ1JWc6pVkksqQFU9co/ZjMnMRNdyaWELdYspLVSArC6Cbb9aDNNLUnLUa4XFTSIlqt2Cv2vvlFVlqemtBSSYo/YqCjkD1e+WHX3gIM3qmSmjp/9N0QVL8XjQT4K68rzRgAvzHyjquGAK+WiETsDPkqnjLDT2dwtQOW02LTcQZfQNQ2lfwGJHjX4pXOqYQMJcYP+YZDA4QRHqk+pARDiryGQL2b9hnv5JFLu0=
+  app: memes-2016
+  on:
+    repo: tiy-hou-q2-2016-rails/memes
+  run:
+    - "rake db:migrate"
