@@ -8,6 +8,28 @@
 </head>
 <body>
 
+  <% if alert %>
+    <p>
+      <%= alert %>
+    </p>
+  <% end %>
+
+  <% if notice %>
+    <p>
+      <%= notice %>
+    </p>
+  <% end %>
+
+  <nav>
+    <%= link_to 'Home', root_path %>
+
+    <% if @current_user.present? %>
+      <%= link_to 'Sign Out', sign_out_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign In', sign_in_path %>
+    <% end %>
+  </nav>
+
 <%= yield %>
 
 </body>
