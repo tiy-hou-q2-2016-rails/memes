@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  use_doorkeeper
+  
   get 'images' => 'images#index', as: :images
   get 'images/new' => 'images#new', as: :new_image
   get 'images/:id' => 'images#show', as: :image

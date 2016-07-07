@@ -46,6 +46,7 @@ group :development do
 end
 
 gem "minitest-rails"
+gem 'doorkeeper'
 
 group :test do
   gem "minitest-rails-capybara"
