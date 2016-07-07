@@ -1,0 +1,11 @@
+<h1>Images</h1>
+
+<%= link_to 'New Image', new_image_path %>
+
+<% @images.each do |image| %>
+  <%= link_to image_path(id: image.id) do %>
+    <div class="thumbnail">
+      <%= image_tag image.photo_url %>
+    </div>
+  <% end %>
+<% end %>
